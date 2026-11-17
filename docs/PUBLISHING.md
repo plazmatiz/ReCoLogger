@@ -6,8 +6,14 @@
    change `PackageId` in `src/ReCoLogger/ReCoLogger.csproj` (keeping `AssemblyName`/namespace is fine).
 2. Fill in the placeholders in `src/ReCoLogger/ReCoLogger.csproj`: `Authors`, `Copyright`, `PackageProjectUrl`,
    `RepositoryUrl`, `PackageReleaseNotes`. Also put your name in `LICENSE`.
-3. Create an API key at <https://www.nuget.org/account/apikeys> (scope: *Push*, glob: `ReCoLogger*`).
-4. Push the project to GitHub and add the key as the repository secret `NUGET_API_KEY`.
+3. Push the project to GitHub (repository `ReCoLogger`).
+4. Set up **Trusted Publishing** (no API key needed; NuGet marks API keys as "not recommended"):
+   - nuget.org → profile menu → **Trusted Publishing** → **Create**
+   - Repository owner: your GitHub user/org, Repository: `ReCoLogger`, Workflow file: `publish.yml`,
+     Environment: leave empty, package: `ReCoLogger` (or a glob such as `ReCoLogger*`)
+   - In the GitHub repository add the secret `NUGET_USER` = your nuget.org profile name (not the email).
+   - If NuGet refuses the very first publish of a brand-new package id, push version 1.0.0 once manually with a
+     short-lived API key (see "Release manually"); later releases go through Trusted Publishing.
 
 Optional: add a 128x128 `icon.png` next to the csproj and set `<PackageIcon>icon.png</PackageIcon>` plus
 `<None Include="icon.png" Pack="true" PackagePath="\" />`.
