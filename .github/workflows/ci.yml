@@ -1,0 +1,38 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  build-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: |
+            8.0.x
+            9.0.x
+            10.0.x
+
+      # TestAllTfms=true makes the test project target net8.0, net9.0 and net10.0,
+      # so the library is exercised on every supported runtime.
+      - name: Restore
+        run: dotnet restore -p:TestAllTfms=true
+
+      - name: Build
+        run: dotnet build -c Release --no-restore -p:TestAllTfms=true
+
+      - name: Test
+        run: dotnet test -c Release --no-build -p:TestAllTfms=true --logger "trx;LogFileName=test-results.trx"
+
+      - name: Pack
+        run: dotnet pack src/ReCoLogger/ReCoLogger.csproj -c Release --no-build -o artifacts
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nuget-package
+          path: artifacts/*

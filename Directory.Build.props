@@ -1,0 +1,12 @@
+<Project>
+
+  <PropertyGroup>
+    <!-- C# 12 is what the .NET 8 SDK uses by default; the code relies on collection expressions and primary constructors. -->
+    <LangVersion>12.0</LangVersion>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Deterministic>true</Deterministic>
+    <ContinuousIntegrationBuild Condition="'$(GITHUB_ACTIONS)' == 'true'">true</ContinuousIntegrationBuild>
+  </PropertyGroup>
+
+</Project>

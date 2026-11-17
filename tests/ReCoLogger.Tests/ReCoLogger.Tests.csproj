@@ -1,0 +1,39 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <!--
+      By default tests run on net10.0 only, because that is the runtime a .NET 10 SDK ships with.
+      CI passes -p:TestAllTfms=true to also run them on the net8.0 and net9.0 runtimes:
+        dotnet test -p:TestAllTfms=true
+    -->
+    <TargetFramework Condition="'$(TestAllTfms)' != 'true'">net10.0</TargetFramework>
+    <TargetFrameworks Condition="'$(TestAllTfms)' == 'true'">net8.0;net9.0;net10.0</TargetFrameworks>
+    <RootNamespace>ReCoLogger.Tests</RootNamespace>
+    <IsPackable>false</IsPackable>
+    <IsTestProject>true</IsTestProject>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.12.0" />
+    <PackageReference Include="xunit" Version="2.9.2" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.8.2">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="coverlet.collector" Version="6.0.2">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <!-- Brings AddLogging() and the DI container for the integration tests. -->
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="8.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\ReCoLogger\ReCoLogger.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Using Include="Xunit" />
+  </ItemGroup>
+
+</Project>

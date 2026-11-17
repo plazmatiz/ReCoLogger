@@ -1,0 +1,21 @@
+## .NET
+bin/
+obj/
+artifacts/
+*.nupkg
+*.snupkg
+TestResults/
+*.trx
+coverage*.xml
+
+## IDEs
+.vs/
+.idea/
+.vscode/
+*.user
+*.suo
+*.DotSettings.user
+
+## OS
+.DS_Store
+Thumbs.db

@@ -1,0 +1,51 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <!-- net8.0 is the minimum. The package works on .NET 8, 9, 10 and later (incl. net8.0-android / net10.0-android apps). -->
+    <TargetFramework>net8.0</TargetFramework>
+    <AssemblyName>ReCoLogger</AssemblyName>
+    <RootNamespace>ReCoLogger</RootNamespace>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <!-- CS1591: missing XML comment on a public member. -->
+    <NoWarn>$(NoWarn);CS1591</NoWarn>
+  </PropertyGroup>
+
+  <!-- ===== NuGet package metadata. Replace YOUR_NAME / URLs before publishing. ===== -->
+  <PropertyGroup>
+    <PackageId>ReCoLogger</PackageId>
+    <Version>1.0.0</Version>
+    <Product>ReCoLogger</Product>
+    <Authors>YOUR_NAME</Authors>
+    <Copyright>Copyright (c) 2026 YOUR_NAME</Copyright>
+    <Description>Drop-in Microsoft.Extensions.Logging provider with console, Android logcat and rolling per-session file output (last N sessions), an observable in-memory list for realtime in-app logs, caller class/method/line, scopes, timing helpers and dynamic query-time filters (level, time, text, class, ILogger category).</Description>
+    <PackageTags>logging;logger;ilogger;microsoft-extensions-logging;logcat;android;avalonia;maui;file-logging;in-app-logs;observable</PackageTags>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageProjectUrl>https://github.com/YOUR_NAME/ReCoLogger</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/YOUR_NAME/ReCoLogger</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageReleaseNotes>See https://github.com/YOUR_NAME/ReCoLogger/blob/main/CHANGELOG.md</PackageReleaseNotes>
+
+    <!-- Source Link + symbol package for a better debugging experience. -->
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\..\README.md" Pack="true" PackagePath="\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- 8.0.0 is the floor, so the package also works in apps that use newer Microsoft.Extensions.* versions. -->
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="8.0.0" />
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0" PrivateAssets="All" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <InternalsVisibleTo Include="ReCoLogger.Tests" />
+  </ItemGroup>
+
+</Project>
