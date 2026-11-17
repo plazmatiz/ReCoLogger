@@ -10,21 +10,21 @@
     <NoWarn>$(NoWarn);CS1591</NoWarn>
   </PropertyGroup>
 
-  <!-- ===== NuGet package metadata. Replace YOUR_NAME / URLs before publishing. ===== -->
+  <!-- ===== NuGet package metadata. Replace plazmatiz / URLs before publishing. ===== -->
   <PropertyGroup>
     <PackageId>ReCoLogger</PackageId>
     <Version>1.0.0</Version>
     <Product>ReCoLogger</Product>
-    <Authors>YOUR_NAME</Authors>
-    <Copyright>Copyright (c) 2026 YOUR_NAME</Copyright>
+    <Authors>plazmatiz</Authors>
+    <Copyright>Copyright (c) 2026 plazmatiz</Copyright>
     <Description>Drop-in Microsoft.Extensions.Logging provider with console, Android logcat and rolling per-session file output (last N sessions), an observable in-memory list for realtime in-app logs, caller class/method/line, scopes, timing helpers and dynamic query-time filters (level, time, text, class, ILogger category).</Description>
     <PackageTags>logging;logger;ilogger;microsoft-extensions-logging;logcat;android;avalonia;maui;file-logging;in-app-logs;observable</PackageTags>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageReadmeFile>README.md</PackageReadmeFile>
-    <PackageProjectUrl>https://github.com/YOUR_NAME/ReCoLogger</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/YOUR_NAME/ReCoLogger</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/plazmatiz/ReCoLogger</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/plazmatiz/ReCoLogger</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
-    <PackageReleaseNotes>See https://github.com/YOUR_NAME/ReCoLogger/blob/main/CHANGELOG.md</PackageReleaseNotes>
+    <PackageReleaseNotes>See https://github.com/plazmatiz/ReCoLogger/blob/main/CHANGELOG.md</PackageReleaseNotes>
 
     <!-- Source Link + symbol package for a better debugging experience. -->
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
